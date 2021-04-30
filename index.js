@@ -1,5 +1,7 @@
 exports.logrocketExposeSession = function (LogRocket) {
   LogRocket.getSessionURL((sessionURL) => {
-    window.logrocketSessionURL = sessionURL;
+    let regex = /\/s\/(.*)(\?)/;
+    const matches = regex.exec(sessionURL);
+    window.logrocketSessionId = matches[1];
   });
 };
